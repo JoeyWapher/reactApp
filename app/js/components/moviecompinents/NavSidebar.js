@@ -13,16 +13,16 @@ module.exports = React.createClass({
         }
     },
     componentDidMount: function() {
-
-        this.resultData(this);
+		var url = "v2/movie/in_theaters";
+        this.resultData(this,url);
     },
     componentWillUnmount: function() {
         // this.serverRequest.abort();
     },
-    resultData:function (e) {
+    resultData:function (e,url) {
         var subjects =[];
         $.ajax({
-            url:"https://api.douban.com/v2/movie/in_theaters",
+            url:"https://api.douban.com/"+url,
             dataType:'jsonp',
             data:'',
             jsonp:'callback',
@@ -41,19 +41,22 @@ module.exports = React.createClass({
         this.setState({
             title : "正在热映"
         })
-        this.resultData(this);
+        var url = "v2/movie/in_theaters";
+        this.resultData(this,url);
     },
     clickMovieWill:function () {
         this.setState({
             title : "即将上映"
     })
-        this.resultData(this);
+        var url = "/v2/movie/coming_soon";
+        this.resultData(this,url);
     },
     clickMovieTop:function () {
         this.setState({
             title : "Top"
     })
-        this.resultData(this);
+        var url = "/v2/movie/top250";
+        this.resultData(this,url);
     },
     render:function () {
         var subjects = this.state.subjects;
@@ -69,7 +72,8 @@ module.exports = React.createClass({
                                images ={item.images.small}
                                average={item.rating.average}
                                casts={item.casts}
-                               directors={item.directors}/>
+                               directors={item.directors}
+                               genres={item.genres}/>
             )
         }.bind(this));
         console.log(this.state) ;

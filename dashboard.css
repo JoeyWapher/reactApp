@@ -103,3 +103,13 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+
+#movieListbadge {
+	margin-top:14px ;
+}
+.media-body p{
+	margin-bottom:5px ;
+}
+.media-body p:first-of-type{
+	margin-top:10px ;
+}
