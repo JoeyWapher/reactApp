@@ -5,6 +5,7 @@ var React = require('react');
 var ShowAddButton =require('./ShowAddButton');
 var QuestionForm =require('./QuestionForm');
 var QuestionList =require('./QuestionList');
+var GoMovieButton =require('./GoMovieButton');
 var _ = require('lodash');
 module.exports = React.createClass({
     getInitialState:function () {
@@ -66,6 +67,7 @@ module.exports = React.createClass({
                     <div className="container">
                         <h1>React问答</h1>
                         <ShowAddButton changeIsOpenState={this.changeIsOpenState}/>
+                        <GoMovieButton />
                     </div>
                 </div>
                 <div className="main container">
